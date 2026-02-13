@@ -104,16 +104,18 @@ SDL_GPUShader* LoadShader(
 	}
 
 	SDL_GPUShaderCreateInfo shaderInfo = {
-		.code = code,
-		.code_size = codeSize,
-		.entrypoint = entrypoint,
-		.format = format,
-		.stage = stage,
-		.num_samplers = samplerCount,
-		.num_uniform_buffers = uniformBufferCount,
-		.num_storage_buffers = storageBufferCount,
-		.num_storage_textures = storageTextureCount
+        .code_size = codeSize,
+        .code = code,
+        .entrypoint = entrypoint,
+        .format = format,
+        .stage = stage,
+        .num_samplers = samplerCount,
+        .num_storage_textures = storageTextureCount,
+        .num_storage_buffers = storageBufferCount,
+        .num_uniform_buffers = uniformBufferCount,
+        .props = 0
 	};
+	
 	SDL_GPUShader* shader = SDL_CreateGPUShader(device, &shaderInfo);
 	if (shader == NULL)
 	{
