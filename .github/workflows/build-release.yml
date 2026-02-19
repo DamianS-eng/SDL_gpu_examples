@@ -49,11 +49,11 @@ jobs:
         run: |
           mkdir build
           cd build
-          ls ../
           cmake .. -DSDL3_DIR="../SDL/build"
 
       - name: Make project
         run: |
+          cd build
           pwd
           ls
           make
