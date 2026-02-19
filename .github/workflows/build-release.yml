@@ -38,7 +38,7 @@ jobs:
           cd build
           cmake ..
           make
-
+       
       - name: Build Examples
         run: |
           mkdir build
@@ -54,6 +54,7 @@ jobs:
         run: |
           pwd
           ls -hsl build/
+          cd build
           file ${EXEC}
           mkdir -p dist
           cp ./${EXEC} dist/${EXEC}-${VERSION}
