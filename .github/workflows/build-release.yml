@@ -41,12 +41,12 @@ jobs:
 
       - name: Build Examples
         run: |
-          cd ../../
-          cd SDL_gpu_examples
+          cd ../
+          pwd
           mkdir build
           cd build
           ls ../
-          cmake .. -DSDL3_DIR="../../SDL/build"
+          cmake .. -DSDL3_DIR="../SDL/build"
 
       - name: Make project
         run: make
