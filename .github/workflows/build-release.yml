@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env: 
-  EXEC: demo
+  EXEC: SDL_gpu_examples
   
 jobs:
   build:
@@ -54,6 +54,7 @@ jobs:
         run: |
           pwd
           ls -hsl build/
+          file ${EXEC}
           mkdir -p dist
           cp ./${EXEC} dist/${EXEC}-${VERSION}
 
