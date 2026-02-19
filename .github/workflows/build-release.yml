@@ -91,6 +91,6 @@ jobs:
         with: 
           tag_name: ${{ needs.build.outputs.tag }}
           name: ${{ env.EXEC }}
-          files: ${{ ENV.OUT_PATH }}${{ env.EXEC }}
+          files: ${{ env.EXEC }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
