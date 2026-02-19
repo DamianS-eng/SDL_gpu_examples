@@ -11,6 +11,7 @@ permissions:
 
 env: 
   EXEC: SDL_gpu_examples
+  OUT_PATH: build/dist/
   
 jobs:
   build:
@@ -61,8 +62,8 @@ jobs:
       - name: Archive executable
         run: |
           pwd
+          mkdir -p ${OUT_PATH}
           cd build
-          mkdir -p dist
           ls -hsl .
           file ${EXEC}
           cp ${EXEC} dist/${EXEC}
@@ -71,7 +72,7 @@ jobs:
         uses: actions/upload-artifact@v4 
         with: 
           name: artifact 
-          path: build/dist/
+          path: ${{ ENV.OUT_PATH }}
   
   release:
     runs-on: ubuntu-latest
@@ -90,6 +91,6 @@ jobs:
         with: 
           tag_name: ${{ needs.build.outputs.tag }}
           name: ${{ env.EXEC }}
-          files: dist/${{ env.EXEC }}
+          files: ${{ ENV.OUT_PATH }}${{ env.EXEC }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
