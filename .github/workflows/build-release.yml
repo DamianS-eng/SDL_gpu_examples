@@ -53,11 +53,11 @@ jobs:
       - name: Archive executable
         run: |
           pwd
-          ls -hsl build/
           cd build
-          file ${EXEC}
           mkdir -p dist
-          cp ./${EXEC} dist/${EXEC}-${VERSION}
+          ls -hsl .
+          file ${EXEC}
+          cp ${EXEC} dist/${EXEC}-${VERSION}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
