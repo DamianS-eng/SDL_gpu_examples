@@ -20,6 +20,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug workspace 
+        run: | 
+          echo "PWD: $(pwd)" 
+          echo "Contents:" 
+          ls -R .
+
       - name: Extract version from tag 
         id: version 
         run: | 
@@ -41,8 +47,8 @@ jobs:
 
       - name: Build Examples
         run: |
-          cd ../
           pwd
+          ls -R .
           mkdir build
           cd build
           ls ../
