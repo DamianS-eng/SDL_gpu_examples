@@ -53,7 +53,7 @@ jobs:
       - name: Archive executable
         run: |
           pwd
-          ls build/SDL_gpu_examples/
+          ls -hsl build/
           mkdir -p dist
           cp ./${EXEC} dist/${EXEC}-${VERSION}
 
