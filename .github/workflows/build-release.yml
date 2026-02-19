@@ -66,6 +66,12 @@ jobs:
           ls -hsl .
           file ${EXEC}
           cp ${EXEC} dist/${EXEC}
+
+      - name: Upload build artifacts 
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: artifact 
+          path: build/dist/
   
   release:
     runs-on: ubuntu-latest
