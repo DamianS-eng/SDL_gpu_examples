@@ -47,15 +47,16 @@ jobs:
 
       - name: Build Examples
         run: |
-          pwd
-          ls -R .
           mkdir build
           cd build
           ls ../
           cmake .. -DSDL3_DIR="../SDL/build"
 
       - name: Make project
-        run: make
+        run: |
+          pwd
+          ls
+          make
 
       - name: Archive executable
         run: |
