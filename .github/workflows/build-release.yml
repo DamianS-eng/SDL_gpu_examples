@@ -15,7 +15,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    outputs: 
+      tag: ${{ steps.time-tag.outputs.tag }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -71,11 +72,18 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout repository 
+        uses: actions/checkout@v4 
+      - name: Download build artifacts 
+        uses: actions/download-artifact@v4 
+        with: 
+          name: artifact 
+          path: .
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with: 
-          tag_name: ${{ steps.time-tag.outputs.tag }}
+          tag_name: ${{ needs.build.outputs.tag }}
           name: ${{ env.EXEC }}
-          files: dist/${EXEC}
+          files: dist/${{ env.EXEC }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
