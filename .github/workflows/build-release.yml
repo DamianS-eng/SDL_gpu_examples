@@ -67,6 +67,9 @@ jobs:
           cd build
           ls -hsl .
           file ${EXEC}
+          if [ -e "${EXEC}.zip" ]; then
+            rm -rf ${EXEC}.zip
+          fi
           zip -rFS ${EXEC}.zip CMakeFiles/ Content/ ${EXEC}
 
       - name: Upload build artifacts 
