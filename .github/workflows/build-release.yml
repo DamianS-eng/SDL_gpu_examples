@@ -67,7 +67,7 @@ jobs:
           cd build
           ls -hsl .
           file ${EXEC}
-          zip ${EXEC}.zip CMakeFiles/ Content/ ${EXEC}
+          zip -rFS ${EXEC}.zip CMakeFiles/ Content/ ${EXEC}
 
       - name: Upload build artifacts 
         uses: actions/upload-artifact@v4 
